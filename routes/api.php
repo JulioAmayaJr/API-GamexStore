@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +27,6 @@ Route::group(['prefix' => 'users'], function ($router) {
     Route::post('/refresh', [App\Http\Controllers\JWTController::class, 'refresh']);
     Route::post('/me', [App\Http\Controllers\JWTController::class, 'me']);
 });
+
+Route::apiResource('categories', CategoriesController::class);
+Route::get('/subCategories',[ App\Http\Controllers\CategoriesController::class,'subCategories']);
